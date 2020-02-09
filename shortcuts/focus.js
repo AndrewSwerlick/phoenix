@@ -12,6 +12,13 @@ const launchChrome = `
   end tell
 `;
 
+const launchFirefox = `
+  tell application "Firefox"
+    make new window
+    activate
+  end tell
+`;
+
 function launchDevTools () {
 
   const chrome = Space.active ().windows ().find ( window => /Google Chrome/.test ( window.app ().name () ) );
@@ -104,8 +111,6 @@ function callbackiTerm ( isNewWindow ) {
 
     if ( !focused ) return;
 
-    magiciTermOpen ( focused );
-
   }, 600 );
 
 }
@@ -113,14 +118,15 @@ function callbackiTerm ( isNewWindow ) {
 /* FOCUS */
 
 const focus = [
-  ['`', HYPER, ['Notable']],
+  // ['`', HYPER, ['Notable']],
   ['c', HYPER, ['Google Chrome', false, /^(?!Developer Tools)/, /Picture in Picture/, launchChrome]],
   ['d', HYPER, ['Google Chrome', true, /(Developer Tools)|(chrome-devtools)/, /Picture in Picture/, launchDevTools]],
-  ['v', HYPER, ['Code', false, false, false, launchVSC]],
+  ['f', HYPER, ['Firefox', false, false, false, launchFirefox]],
+  // ['v', HYPER, ['Code', false, false, false, launchVSC]],
   // ['t', HYPER, ['Terminal', false, false, false, launchTerminal, callbackTerminal]], //FIXME: Ugly, but since `windowDidOpen` won't trigger, at least now it will behave as expected
   // ['t', HYPER, ['Hyper', false, false, false, launchHyper, callbackHyper]], //FIXME: Ugly, but since `windowDidOpen` won't trigger, at least now it will behave as expected
   ['t', HYPER, ['iTerm', false, false, false, launchiTerm, callbackiTerm]], //FIXME: Ugly, but since `windowDidOpen` won't trigger, at least now it will behave as expected
-  ['f', HYPER, ['Finder', false, false, false, launchFinder]],
+  //['f', HYPER, ['Finder', false, false, false, launchFinder]],
   ['g', HYPER, ['Tower']]
 ];
 
