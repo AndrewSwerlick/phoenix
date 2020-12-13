@@ -28,6 +28,7 @@ require ( './helpers/set_anchor.js' );
 require ( './helpers/set_event_handler.js' );
 require ( './helpers/set_events_handler.js' );
 require ( './helpers/set_frame.js' );
+require ( './helpers/set_screen.js' );
 require ( './helpers/set_key_handler.js' );
 require ( './helpers/set_keys_handler.js' );
 require ( './helpers/shell.js' );
